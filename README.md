@@ -1,5 +1,5 @@
 # jquery-mobile-keypad
-Keypad for mobile
+Numeric Keypad for mobile
 
 # Usage
 
