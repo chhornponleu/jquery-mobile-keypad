@@ -30,7 +30,7 @@
         }
 
             $tpl = $(tpl);
-        $tpl.hide();
+        $tpl.toggleClass('active', false);
         var ns = this.getKeyNumbers();
         for (var i = 0; i < ns.length; i++) {
             var v = ns[i];
@@ -46,7 +46,8 @@
         this.el.on('focus', function () {
             self.show();
         });
-        instance.on('touchstart', 'button', function (e) {
+        instance.on('click', 'button', function (e) {
+            e.stopPropagation();
             var val = $(this).attr(self.options.valueAttr);
             var cmd = $(this).attr('cmd');
             if (cmd == self.CMD_BACK) {
@@ -88,10 +89,10 @@
         return pos;
     };
     Keypad.prototype.show = function () {
-        this.instance.show();  
+        this.instance.addClass('active');  
     };
     Keypad.prototype.hide = function () {
-        this.instance.hide();
+        this.instance.removeClass('active');
     }
     Keypad.prototype.getKeyNumbers = function () {
         var ns = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
